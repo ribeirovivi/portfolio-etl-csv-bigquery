@@ -1,7 +1,13 @@
 # Pipeline ETL: CSV → BigQuery (Olist Brazilian E-Commerce)
 
+[![Testes](https://github.com/ribeirovivi/portfolio-etl-csv-bigquery/actions/workflows/tests.yml/badge.svg)](https://github.com/ribeirovivi/portfolio-etl-csv-bigquery/actions/workflows/tests.yml)
+
 Projeto de portfólio: pipeline ETL que extrai dados de arquivos CSV públicos,
 limpa e transforma com Python/Pandas, e carrega o resultado no Google BigQuery.
+
+**Em resumo:** 9 CSVs → limpeza com pandas → 9 tabelas no BigQuery, carga
+idempotente (`WRITE_TRUNCATE`), 11 testes automatizados (rodam a cada push no
+GitHub Actions) e 5 consultas SQL de análise de negócio.
 
 ## Dataset
 
@@ -160,7 +166,7 @@ Exemplo, consulta `05_satisfacao_vs_atraso` executada no BigQuery:
 
 ![Resultado da consulta de satisfação vs. atraso no BigQuery](docs/bigquery-consulta-satisfacao.png)
 
-Para rodar uma consulta, abra o arquivo, troque `extreme-hull-449521-e8` pelo
+Para rodar uma consulta, abra o arquivo, troque `SEU_PROJECT_ID` pelo
 seu `GCP_PROJECT_ID` e execute no console do BigQuery.
 
 ## Estrutura do projeto
@@ -203,3 +209,11 @@ portfolio-etl-csv-bigquery/
 - Orquestrar com Airflow ou Dagster
 - Modelar um star schema (dbt) em vez de carregar as tabelas "como estão"
 - Testes de integração do `--dry-run` com uma amostra dos dados
+
+## Créditos
+
+- Dados: [Olist Brazilian E-Commerce Public Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) (Kaggle), usado apenas para estudo; os CSVs não são versionados neste repositório.
+
+## Autora
+
+Vivian Ribeiro · [GitHub](https://github.com/ribeirovivi)
